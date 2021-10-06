@@ -60,12 +60,26 @@ use redisson-util-starter instead, you need to apply the following changes
 
 1. Change your dependency on the old redisson-starter lib to point to redisson-util-starter.
 2. Provide a redisson client, preferably by using 
-[redisson-spring-boot-starter](https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter).
+[redisson-spring-boot-starter](https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter), update build.gradle
+by adding the below dependencies
+```
+implementation("org.redisson:redisson-spring-boot-starter:${redissonVersion}")
+implementation("org.redisson:redisson-spring-data-23:${redissonVersion}") // replace 23 to match spring boot version
+```
+to build.gradle.
+
 3. Update your imports to reflect that the classes in the library have been moved from package
 `se.svt.oss.redisson.starter` to `se.svt.oss.redisson.util.starter`.
 4. Update your configuration to reflect that the configuration properties are
 now under `redisson-util` instead of `redis.redisson` .
-
+5. Depending on your usecase, you may also need to configure the default codec used by redisson. To
+get the same behaviour as the old library, you can add a bean like below.
+```
+    @Bean
+    public RedissonAutoConfigurationCustomizer redissonAutoConfigurationCustomizer(ObjectMapper objectMapper) {
+        return configuration -> configuration.setCodec(new JsonJacksonCodec(objectMapper));
+    }
+```
 # Mocking the RedissonLockService with mockk
 
 Calling `RedissonLockService.tryWithLock` on a mockk object without specifiying all parameters will fail, because
