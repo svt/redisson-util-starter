@@ -37,7 +37,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testImplementation("io.mockk:mockk:1.12.4")
-
 }
 
 kotlin {
@@ -47,12 +46,11 @@ kotlin {
     }
 }
 
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11" //kaptGenerateStubsTestKotlin still needs this until Gradle 7.5. works without
-        //generate warnings
+        jvmTarget = "11" // kaptGenerateStubsTestKotlin still needs this until Gradle 7.5. works without
+        // generate warnings
     }
 }
 
@@ -66,4 +64,3 @@ tasks.wrapper {
     distributionType = Wrapper.DistributionType.ALL
     gradleVersion = "7.4.2"
 }
-

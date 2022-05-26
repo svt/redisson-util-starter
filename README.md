@@ -6,14 +6,14 @@
 
 Spring boot starter that given a [redisson](https://github.com/redisson/redisson) client bean provides additional services for working with
 redisson locks and queues:
- 
- - **RedissonLockService**
- 	A service that provied a ```tryWithLock``` method that uses a redisson lock. 
-	A bean will be provided  if `redisson-util.lock.name-prefix` property is set.
- - **RedissonLibQeueue**
-	If `redisson-util.queue.name property` is set, a redisson priority queue will be provided.
 
-This library is written in kotlin. It is a rework of the now deprecated library 
+- **RedissonLockService**
+  A service that provied a ```tryWithLock``` method that uses a redisson lock.
+ A bean will be provided  if `redisson-util.lock.name-prefix` property is set.
+- **RedissonLibQeueue**
+ If `redisson-util.queue.name property` is set, a redisson priority queue will be provided.
+
+This library is written in kotlin. It is a rework of the now deprecated library
 "redisson-starter".
 
 ## Usage ##
@@ -42,7 +42,7 @@ redisson-util:
     name: ${service.name}-queue
 ```
 
-For the lock service, name, wait-time and lease-time only configures default values that can be overriden when calling 
+For the lock service, name, wait-time and lease-time only configures default values that can be overriden when calling
 the lock service:
 
 ```
@@ -58,7 +58,7 @@ If your application was previously using the "redisson starter", and you now wan
 use redisson-util-starter instead, you need to apply the following changes
 
 1. Change your dependency on the old redisson-starter lib to point to redisson-util-starter.
-2. Provide a redisson client, preferably by using 
+2. Provide a redisson client, preferably by using
 [redisson-spring-boot-starter](https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter), update build.gradle
 by adding the below dependencies
 ```
@@ -82,12 +82,12 @@ get the same behaviour as the old library, you can add a bean like below.
 # Mocking the RedissonLockService with mockk
 
 Calling `RedissonLockService.tryWithLock` on a mockk object without specifying all parameters will fail, because
-the default parameter values reference an instance field that will not be available. 
+the default parameter values reference an instance field that will not be available.
 To get around this, a spy can be used instead:
 
 ```kotlin
 private val redissonLockService = spyk(RedissonLockService(mockk(), mockk(relaxed = true)))
-``` 
+```
 
 A similar strategy can be used with Mockito as well.
 
