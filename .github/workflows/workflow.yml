@@ -1,0 +1,18 @@
+---
+name: redisson util starter workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  license:
+    uses: ./.github/workflows/license.yml
+  test:
+    uses: ./.github/workflows/test.yml
+  lint:
+    uses: ./.github/workflows/lint.yml
