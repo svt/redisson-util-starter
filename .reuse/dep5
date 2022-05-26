@@ -20,6 +20,10 @@ Files: *.properties
 Copyright: 2020 Sveriges Television AB
 License: CC0-1.0
 
+Files: *.adoc
+Copyright: 2022 Sveriges Television AB
+License: CC0-1.0
+
 Files: src/main/resources/META-INF/spring.factories
 Copyright: 2020 Sveriges Television AB
 License: Apache-2.0
@@ -28,9 +32,9 @@ License: Apache-2.0
 
 
 Files: gradlew*
-Copyright: 2007-2020 The original author or authors <info@gradle.com>
+Copyright: 2007-2022 The original author or authors <info@gradle.com>
 License: Apache-2.0
 
 Files: gradle/*
-Copyright: 2007-2020 The original author or authors <info@gradle.com>
+Copyright: 2007-2022 The original author or authors <info@gradle.com>
 License: Apache-2.0

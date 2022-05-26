@@ -46,18 +46,6 @@ https://medium.com/@MarkEmeis/git-commit-signoff-vs-signing-9f37ee272b14/[Git si
 
 == Git History
 
-* Consider following the Conventional Commit standard: https://www.conventionalcommits.org
-
-* We pay more attention to the quality of commit messages. In general, we share the view on how commit messages should be written with
- https://github.com/git/git/blob/master/Documentation/SubmittingPatches[the Git project itself]
-
-* https://github.com/git/git/blob/e6932248fcb41fb94a0be484050881e03c7eb298/Documentation/SubmittingPatches#L43[Make separate commits for logically separate changes.]
-For example, pure formatting changes that do not affect software behaviour usually do not belong in the same commit as changes to program logic.
-
-* https://github.com/git/git/blob/e6932248fcb41fb94a0be484050881e03c7eb298/Documentation/SubmittingPatches#L101[Describe your changes well.]
-Do not just repeat in prose what is "obvious" from the code, but provide a rationale explaining _why_ you believe your change is necessary.
-
-* https://github.com/git/git/blob/e6932248fcb41fb94a0be484050881e03c7eb298/Documentation/SubmittingPatches#L133[Describe your changes in the imperative.]
-Instead of writing for example, "Fixes an issue x with encoding" prefer "fix encoding issue x" or "fix: encoding issue x was fixed" (Conventional Commit style). Think about it like the commit only does something _if_ it is applied. 
+* See the Git history for commit message convention.
 
 Thank you for reading and happy contributing!
