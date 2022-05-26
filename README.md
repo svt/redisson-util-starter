@@ -16,7 +16,7 @@ redisson locks and queues:
 This library is written in kotlin. It is a rework of the now deprecated library
 "redisson-starter".
 
-## Usage ##
+## Usage
 
 Add the lib as a dependency to your Gradle build file.
 
@@ -32,7 +32,7 @@ implementation("org.redisson:redisson-spring-boot-starter:3.17.2")
 
 Configure in `application.yml` (or other property source) :
 
-```
+```yaml
 redisson-util:
   lock:
     name: ${service.name}-lock
@@ -45,7 +45,7 @@ redisson-util:
 For the lock service, name, wait-time and lease-time only configures default values that can be overriden when calling
 the lock service:
 
-```
+```kotlin
 redissonLockService.tryWithLock(name = "my-other-lock", 
                                 waitTime = Duration.ofSeconds(10),
                                 leaseTime = Duration.ofHours(1)) {
@@ -61,7 +61,8 @@ use redisson-util-starter instead, you need to apply the following changes
 2. Provide a redisson client, preferably by using
 [redisson-spring-boot-starter](https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter), update build.gradle
 by adding the below dependencies
-```
+
+```yaml
 implementation("org.redisson:redisson-spring-boot-starter:${redissonVersion}")
 implementation("org.redisson:redisson-spring-data-23:${redissonVersion}") // replace 23 to match spring boot version
 ```
@@ -73,13 +74,14 @@ to build.gradle.
 now under `redisson-util` instead of `redis.redisson` .
 5. Depending on your usecase, you may also need to configure the default codec used by redisson. To
 get the same behaviour as the old library, you can add a bean like below.
-```
+
+```kotlin
     @Bean
     public RedissonAutoConfigurationCustomizer redissonAutoConfigurationCustomizer(ObjectMapper objectMapper) {
         return configuration -> configuration.setCodec(new JsonJacksonCodec(objectMapper));
     }
 ```
-# Mocking the RedissonLockService with mockk
+## Mocking the RedissonLockService with mockk
 
 Calling `RedissonLockService.tryWithLock` on a mockk object without specifying all parameters will fail, because
 the default parameter values reference an instance field that will not be available.
@@ -91,7 +93,7 @@ private val redissonLockService = spyk(RedissonLockService(mockk(), mockk(relaxe
 
 A similar strategy can be used with Mockito as well.
 
-#### Tests ####
+## Tests
 
 run `./gradlew clean check` for unit tests and code quality checks
   
