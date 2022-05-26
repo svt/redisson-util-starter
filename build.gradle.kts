@@ -14,7 +14,7 @@ plugins {
     id("com.github.fhermansson.assertj-generator") version "1.1.4"
     id("pl.allegro.tech.build.axion-release") version "1.13.9"
     id("se.ascp.gradle.gradle-versions-filter") version "0.1.16"
-    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.17"
+    id("se.svt.oss.gradle-yapp-publisher") version "0.1.18"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
